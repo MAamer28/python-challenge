@@ -3,7 +3,7 @@ import csv
 
 data_path = os.path.join("PyBank", "Resources","budget_data.csv")
 
-text_output = ("output.txt")
+text_output = os.path.join("PyBank", "finanalysis_output.txt")
 
 total_months = 0
 net_total = 0
@@ -40,10 +40,17 @@ with open(data_path, newline= '') as csvfile:
     
     rev_average = sum(rev_rate)/len(rev_rate)
 
+    print("Total Months: " + str(total_months))
+    print("Total: $" + str(net_total))
+    print("Average Change: $" + str(rev_average))
+    print("Greatest Increase in Profits: " + str(max_gain [0]) + "($" + str(max_gain[1]) + ")")
+    print("Greatest Decrease in Profits: " + str(max_loss[0]) + "($" + str(max_loss[1]) + ")") 
+
+
 with open(text_output, "w") as file:
     file.write("Financial Analysis\n")
-    file.write("Total Months: %d\n" % total_months)
-    file.write("Total Revenue: $%d\n" % net_total)
-    file.write("Average Change $%d\n" %rev_average)
-    file.write("Greatest Increase in Profits: %s ($%s)\n" % (max_gain[0], max_gain[1]))
-    file.write("Greatest Decrease in Profits: %s ($%s)\n" % (max_loss[0], max_loss[1]))
+    file.write("Total Months: " + str(total_months) + "\n")
+    file.write("Total: $" + str(net_total) + "\n")
+    file.write("Average Change: $" + str(rev_average) + "\n")
+    file.write("Greatest Increase in Profits: " + str(max_gain [0]) + "($" + str(max_gain[1]) + ")" + "\n")
+    file.write("Greatest Decrease in Profits: " + str(max_loss[0]) + "($" + str(max_loss[1]) + ")" + "\n")
