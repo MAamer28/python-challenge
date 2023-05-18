@@ -27,7 +27,7 @@ with open(data_path, newline= '') as csvfile:
 
         rev_change = float(row['Profit/Losses']) - prevmonth_rev
         prevmonth_rev = float(row["Profit/Losses"])
-        rev_rate = rev_rate + [rev_change]
+        rev_rate = [rev_change] + rev_rate
         monthly_change = [monthly_change] + [row["Date"]]
 
         if rev_change > max_gain[1]:
