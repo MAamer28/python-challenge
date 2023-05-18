@@ -1,13 +1,15 @@
 import os
 import csv
 
-data_path = os.path.join("Resources", "budget_data.csv")
+data_path = os.path.join("PyBank", "Resources","budget_data.csv")
 
-money = 0
+net_total = 0
 
-with open(data_path, "r") as csvfile:
-    budget_csv = csv.reader(csvfile)
+with open(data_path, newline= '') as csvfile:
+    budget_csv = csv.DictReader(csvfile)
 
-    row_count = sum(1 for row in budget_csv)
-    print(row_count)
+    for row in budget_csv:
+        print(dict(row))
+        net_total = net_total + int(row['Profit/Losses'])
 
+print(net_total)
